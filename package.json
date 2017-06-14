@@ -4,7 +4,7 @@
   "description": "UI and DB for tracking hardware usage",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node bootstrap.js",
     "test": "standard",
     "lint": "standard | snazzy"
   },
