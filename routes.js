@@ -8,6 +8,7 @@ const Assets = require('./app/controllers/assets')
 
 module.exports = [
   { method: 'GET', path: '/home', config: Administrators.main },
+  { method: 'POST', path: '/addemployee', config: Administrators.addEmployee },
 
   {
     method: 'GET',

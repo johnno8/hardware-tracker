@@ -11,4 +11,33 @@
       </div>
     </div>
   </div>
+
+  <div class="ui grid">
+    <div class="ui four wide column">
+    </div>
+    <div class="ui eight wide column">
+      <form class="ui fluid form" action="/addemployee" method="POST">
+        <h3 class="ui header">Add Employee to database</h3>
+        <div class="two fields">
+          <div class="field">
+            <label>First Name</label>
+            <input value="{{employee.firstName}}" type="text" name="firstName">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input value="{{employee.lastName}}" type="text" name="lastName">
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input value="{{employee.email}}" type="text" name="email">
+        </div>
+        <div class="field">
+          <label>Job Title</label>
+          <input value="{{employee.title}}" type="text" name="title">
+        </div>
+        <button class="ui blue submit button">Add the Employee</button>
+      </form>
+    </div>
+  </div>
 </section>
