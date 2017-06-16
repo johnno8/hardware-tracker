@@ -1,0 +1,46 @@
+{{> menu }}
+
+<section class="ui raised segment">
+  <div class="ui grid">
+    <div class="ui four wide column">
+      <img src="images/nf1.jpg" class="ui centered medium image">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui basic padded segment">
+        <h1 class="ui blue header">Hardware Tracker</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="ui four wide column">
+    </div>
+    <div class="ui eight wide column">
+      <form class="ui fluid form" action="/addemployee" method="POST">
+        <h3 class="ui header">Add Employee to database</h3>
+        <div class="two fields">
+          <div class="field">
+            <label>First Name</label>
+            <input value="{{employee.firstName}}" type="text" name="firstName">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input value="{{employee.lastName}}" type="text" name="lastName">
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input value="{{employee.email}}" type="text" name="email">
+        </div>
+        <div class="field">
+          <label>Job Title</label>
+          <input value="{{employee.title}}" type="text" name="title">
+        </div>
+        <button class="ui blue submit button">Save Employee</button>
+      </form>
+      <form class="ui form" action="showAllEmployees" method="GET">
+        <button class="ui right floated blue basic submit button">Display all Employees</button>
+      </form>
+    </div>
+  </div>
+</section>

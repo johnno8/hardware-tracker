@@ -12,9 +12,6 @@ services:
     environment:
       HARDWARE_HOST: 0.0.0.0
       PG_HOST: postgres
-      #PG_HOST: postgres
-      #DATABASE_URL: postgres://hardwareDBuser:hardwareDBPassword@hardware_postgres:5432/hardwareDB
-
     links:
       - postgres
 

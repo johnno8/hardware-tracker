@@ -1,0 +1,50 @@
+{{> menu }}
+
+<section class="ui raised segment">
+  <div class="ui grid">
+    <div class="ui four wide column">
+      <img src="images/nf1.jpg" class="ui centered medium image">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui basic padded segment">
+        <h1 class="ui blue header">Hardware Tracker</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="ui four wide column">
+    </div>
+    <div class="ui eight wide column">
+      <form class="ui fluid form" action="/adddevice" method="POST">
+        <h3 class="ui header">Add Device to database</h3>
+        <div class="field">
+          <label>Serial number</label>
+          <input value="{{device.serialnum}}" type="text" name="serialnum">
+        </div>
+        <div class="field">
+          <label>Type</label>
+          <input value="{{device.type}}" type="text" name="type">
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Make</label>
+            <input value="{{device.make}}" type="text" name="make">
+          </div>
+          <div class="field">
+            <label>Model</label>
+            <input value="{{device.model}}" type="text" name="model">
+          </div>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <input value="{{device.description}}" type="text" name="description">
+        </div>
+        <button class="ui blue submit button">Add the Device</button>
+      </form>
+      <form class="ui form" action="showAllDevices" method="GET">
+        <button class="ui right floated blue basic submit button">Display all Devices</button>
+      </form>
+    </div>
+  </div>
+</section>

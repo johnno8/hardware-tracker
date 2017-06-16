@@ -1,0 +1,39 @@
+{{> menu }}
+
+<section class="ui raised segment">
+  <div class="ui grid">
+    <div class="ui four wide column">
+      <img src="images/nf1.jpg" class="ui centered medium image">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui basic padded segment">
+        <h1 class="ui blue header">Employees Details</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+      <table class="ui celled blue table segment">
+        <thead>
+        <tr>
+          <th> Name</th>
+          <th> Job Title</th>
+          <th> Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each employees}}
+          <tr>
+            <td> {{ first_name }} {{ last_name }} </td>
+            <td> {{ job_title }} </td>
+            <td> {{ email }} </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

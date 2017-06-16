@@ -5,11 +5,11 @@
 
 module.exports = function (sequelize, DataTypes) {
   const Device = sequelize.define('Device', {
-    id: { type: DataTypes.STRING, primaryKey: true },
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    job_title: DataTypes.STRING,
-    email: DataTypes.STRING
+    serial_num: { type: DataTypes.STRING, primaryKey: true },
+    type: DataTypes.STRING,
+    make: DataTypes.STRING,
+    model: DataTypes.STRING,
+    description: DataTypes.STRING
   }, {
     classMethods: {
       associate: function (models) {
