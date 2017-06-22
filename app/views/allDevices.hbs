@@ -17,6 +17,7 @@
     </div>
     <div class="ui twelve wide column">
       <table class="ui celled blue table segment">
+      <!--<table class="ui celled definition table">-->
         <thead>
         <tr>
           <th> Serial No.</th>
@@ -30,13 +31,27 @@
         <tbody>
         {{#each devices}}
           <tr>
+            <!--<td class="selectable">-->
+              <!--<form action="/assignment" method="POST">-->
+                <!--&lt;!&ndash;<a href="#">Assign</a>&ndash;&gt;-->
+                <!--<button class="ui fluid blue submit button">Assign</button>-->
+              <!--</form>-->
+            <!--</td>-->
             <td> {{ serial_num }} </td>
             <td> {{ type }} </td>
             <td> {{ make }} </td>
             <td> {{ model }} </td>
             <td> {{ description }} </td>
-            <td class="selectable">
-              <a href="#">Assign</a>
+            <td>
+              <form action="/assignment" method="POST">
+                <!--<a href="#">Assign</a>-->
+                <input name="serial_num" type="hidden" value="{{ serial_num }}">
+                <input name="type" type="hidden" value="{{ type }}">
+                <input name="make" type="hidden" value="{{ make }}">
+                <input name="model" type="hidden" value="{{ model }}">
+                <input name="description" type="hidden" value="{{ description }}">
+                <button class="ui fluid blue submit button">Assign</button>
+              </form>
             </td>
           </tr>
         {{/each}}
@@ -44,5 +59,14 @@
       </table>
     </div>
   </div>
+  <!--<div>-->
+    <!--<div class="ui grid">-->
+      <!--<div class="ui two wide column">-->
+      <!--</div>-->
+      <!--<div class="ui twelve wide column">-->
+        <!--<div id="formDiv"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
 </section>

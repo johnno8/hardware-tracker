@@ -1,0 +1,52 @@
+{{> menu }}
+
+<section class="ui raised segment">
+  <div class="ui grid">
+    <div class="ui four wide column">
+      <img src="images/nf1.jpg" class="ui centered medium image">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui basic padded segment">
+        <h1 class="ui blue header">Assign a Device</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+        <form class="ui fluid form" action="/assignDevice" method="POST">
+          <h3 class="ui header">Add Device to database</h3>
+          <div class="field">
+            <label>Serial number</label>
+            <input value="{{serial_num}}" type="text" name="serial_num">
+          </div>
+          <div class="field">
+            <label>Type</label>
+            <input value="{{type}}" type="text" name="type">
+          </div>
+          <div class="two fields">
+            <div class="field">
+              <label>Make</label>
+              <input value="{{make}}" type="text" name="make">
+            </div>
+            <div class="field">
+              <label>Model</label>
+              <input value="{{model}}" type="text" name="model">
+            </div>
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <input value="{{description}}" type="text" name="description">
+          </div>
+          <div class="field">
+            <label>Assignee Email</label>
+            <input type="text" name="email">
+          </div>
+          <button class="ui blue submit button">Assign the Device</button>
+        </form>
+    </div>
+  </div>
+
+</section>

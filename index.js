@@ -3,11 +3,12 @@
 const Hapi = require('hapi')
 const Vision = require('vision')
 const Inert = require('inert')
-const models = require('./app/models')
+// const models = require('./app/models')
+const db = require('./app/models/index.js')
 
 const server = new Hapi.Server()
 
-server.connection( { port: 4000, host: process.env.HARDWARE_HOST || 'localhost' } )
+server.connection({ port: 4000, host: process.env.HARDWARE_HOST || 'localhost' })
 
 server.register([Vision, Inert], (err) => {
   if (err) {
@@ -22,7 +23,7 @@ server.register([Vision, Inert], (err) => {
     path: './app/views',
     layoutPath: './app/views/layout',
     partialsPath: './app/views/partials',
-    //helpersPath: './app/views/helpers',
+    // helpersPath: './app/views/helpers',
     layout: true,
     isCached: false
   })
@@ -34,7 +35,8 @@ server.register([Vision, Inert], (err) => {
   //   console.log(`Server running at: ${server.info.uri}`)
   // })
 
-  models.sequelize.sync({ force: true }).then(() => {
+  // models.sequelize.sync({ force: true }).then(() => {
+  db.sequelize.sync({ force: true }).then(() => {
     server.start((err) => {
       if (err) {
         throw err
@@ -42,6 +44,4 @@ server.register([Vision, Inert], (err) => {
       console.log(`Server running at: ${server.info.uri}`)
     })
   })
-
-
 })

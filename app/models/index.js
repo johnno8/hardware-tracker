@@ -3,8 +3,8 @@
  */
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
+// const fs = require('fs')
+// const path = require('path')
 const Sequelize = require('sequelize')
 const config = require('../../config')
 
@@ -34,6 +34,7 @@ const sequelize = new Sequelize(config.pg.name, config.pg.user, config.pg.passwo
 
 let db = {}
 
+/*
 fs
     .readdirSync(__dirname)
     .filter(function (file) {
@@ -48,9 +49,15 @@ Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
   }
-})
+}) */
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
+
+db.employees = require('./employee.js')(sequelize, Sequelize)
+db.devices = require('./device.js')(sequelize, Sequelize)
+
+db.devices.belongsTo(db.employees)
+db.employees.hasMany(db.devices)
 
 module.exports = db

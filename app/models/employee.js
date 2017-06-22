@@ -10,12 +10,13 @@ module.exports = function (sequelize, DataTypes) {
     last_name: DataTypes.STRING,
     job_title: DataTypes.STRING,
     email: DataTypes.STRING
-  }, {
+  } /*, {
     classMethods: {
       associate: function (models) {
         Employee.hasMany(models.Device)
       }
     }
-  })
+  } */
+  )
   return Employee
 }

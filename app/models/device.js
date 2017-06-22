@@ -10,12 +10,13 @@ module.exports = function (sequelize, DataTypes) {
     make: DataTypes.STRING,
     model: DataTypes.STRING,
     description: DataTypes.STRING
-  }, {
+  } /*, {
     classMethods: {
       associate: function (models) {
         Device.belongsTo(models.Employee)
       }
     }
-  })
+  } */
+  )
   return Device
 }

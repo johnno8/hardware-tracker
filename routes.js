@@ -14,6 +14,8 @@ module.exports = [
   { method: 'POST', path: '/adddevice', config: Administrators.adddevice },
   { method: 'GET', path: '/showAllEmployees', config: Administrators.showEmployees },
   { method: 'GET', path: '/showAllDevices', config: Administrators.showDevices },
+  { method: 'POST', path: '/assignment', config: Administrators.assignment },
+  { method: 'POST', path: '/assignDevice', config: Administrators.assignDevice },
 
   {
     method: 'GET',

@@ -4,8 +4,8 @@ services:
     build: .
     volumes:
       - .:/hardware
-    depends_on:
-      - postgres
+    # depends_on:
+    #  - postgres
     ports:
       - "4000:4000"
     env_file: .env

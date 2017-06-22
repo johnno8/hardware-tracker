@@ -20,25 +20,48 @@
         <h3 class="ui header">Add Device to database</h3>
         <div class="field">
           <label>Serial number</label>
-          <input value="{{device.serialnum}}" type="text" name="serialnum">
+          <input type="text" name="serialnum">
         </div>
+
+        <!--<div class="field">-->
+          <!--<label>Type</label>-->
+          <!--<input type="text" name="type">-->
+        <!--</div>-->
+
         <div class="field">
-          <label>Type</label>
-          <input value="{{device.type}}" type="text" name="type">
+          <label><strong>Device type</strong></label>
+          <div class="ui selection dropdown type">
+            <input type="hidden" name="type">
+            <i class="dropdown icon"></i>
+            <div class="default text">Type</div>
+            <div class="menu">
+              <div class="item" data-value="laptop">Laptop</div>
+              <div class="item" data-value="monitor">Monitor</div>
+              <div class="item" data-value="keyboard">Keyboard</div>
+              <div class="item" data-value="mouse">Mouse</div>
+              <div class="item" data-value="macmini">Mac Mini</div>
+              <div class="item" data-value="other">Other</div>
+            </div>
+          </div>
         </div>
+
         <div class="two fields">
           <div class="field">
             <label>Make</label>
-            <input value="{{device.make}}" type="text" name="make">
+            <input  type="text" name="make">
           </div>
           <div class="field">
             <label>Model</label>
-            <input value="{{device.model}}" type="text" name="model">
+            <input type="text" name="model">
           </div>
         </div>
         <div class="field">
           <label>Description</label>
-          <input value="{{device.description}}" type="text" name="description">
+          <input type="text" name="description">
+        </div>
+        <div class="field">
+          <label>Assignee Email</label>
+          <input type="text" name="email">
         </div>
         <button class="ui blue submit button">Add the Device</button>
       </form>
@@ -48,3 +71,5 @@
     </div>
   </div>
 </section>
+
+<script>$('.ui.selection.dropdown.type').dropdown()</script>
