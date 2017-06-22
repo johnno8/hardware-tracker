@@ -1,0 +1,95 @@
+[
+  {
+    "model": "employees",
+    "keys": ["id"],
+    "data": {
+      "id": "rg46F96",
+      "first_name": "Joe",
+      "last_name": "Bloggs",
+      "job_title": "Chief Bottle Washer",
+      "email": "joe.bloggs@mail.com"
+    }
+  },
+  {
+    "model": "employees",
+    "keys": ["id"],
+    "data": {
+      "id": "4u52fhZ",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "job_title": "Wine Taster",
+      "email": "jane.doe@mail.com"
+    }
+  },
+  {
+    "model": "employees",
+    "keys": ["id"],
+    "data": {
+      "id": "n754Qel",
+      "first_name": "Jim",
+      "last_name": "Figgerty",
+      "job_title": "Cider Taster",
+      "email": "jim.figgerty@mail.com"
+    }
+  },
+  {
+    "model": "devices",
+    "keys": ["serial_num"],
+    "data": {
+      "serial_num": "abc123",
+      "type": "laptop",
+      "make": "Apple",
+      "model": "MacBook Pro",
+      "description": "i5, 8GB RAM, 256GB SSD",
+      "EmployeeId": "rg46F96"
+    }
+  },
+  {
+    "model": "devices",
+    "keys": ["serial_num"],
+    "data": {
+      "serial_num": "sdf675",
+      "type": "laptop",
+      "make": "Apple",
+      "model": "MacBook",
+      "description": "i7, 16GB RAM, 512GB SSD",
+      "EmployeeId": "4u52fhZ"
+    }
+  },
+  {
+    "model": "devices",
+    "keys": ["serial_num"],
+    "data": {
+      "serial_num": "fth374",
+      "type": "monitor",
+      "make": "Dell",
+      "model": "u2515",
+      "description": "25\" HD monitor",
+      "EmployeeId": "4u52fhZ"
+    }
+  },
+  {
+    "model": "devices",
+    "keys": ["serial_num"],
+    "data": {
+      "serial_num": "sdf675",
+      "type": "mouse",
+      "make": "Apple",
+      "model": "Magic mouse",
+      "description": "Wireless Bluetooth mouse",
+      "EmployeeId": "4u52fhZ"
+    }
+  },
+  {
+    "model": "devices",
+    "keys": ["serial_num"],
+    "data": {
+      "serial_num": "sdf675",
+      "type": "keyboard",
+      "make": "Apple",
+      "model": "Magic keyboard",
+      "description": "Wireless Bluetooth keyboard",
+      "EmployeeId": ""
+    }
+  }
+]
