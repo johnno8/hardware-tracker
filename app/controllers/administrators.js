@@ -27,7 +27,6 @@ exports.addEmployee = {
   handler: (request, reply) => {
     let data = request.payload
 
-    // models.Employee.create({
     db.employees.create({
       id: shortId.generate(),
       first_name: data.firstName,
@@ -46,12 +45,53 @@ exports.addEmployee = {
 exports.showEmployees = {
 
   handler: (request, reply) => {
-    // models.Employee.findAll().then(employees => {
     db.employees.findAll().then(employees => {
       reply.view('allEmployees', {
         title: 'All Employees',
         employees: employees
       })
+    })
+  }
+}
+
+exports.displayEmployee = {
+
+  handler: (request, reply) => {
+    let data = request.params.id
+
+    db.employees.find({
+      where: { id: data },
+      include: [{
+        model: db.devices,
+        where: { EmployeeId: data }
+      }]
+    }).then(employee => {
+      console.log('employee: ' + JSON.stringify(employee, null, 2))
+      reply.view('employeeDetails', {
+        title: 'Employee Details',
+        employee: employee
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+exports.displayType = {
+
+  handler: (request, reply) => {
+    let data = request.payload
+
+    db.devices.findAll({
+      where: { type: data.type }
+    }).then(devices => {
+      reply.view('allDevices', {
+        pageHeader: 'All ' + data.type + 's',
+        devices: devices
+      })
+      //     .catch(err => {
+      //   console.log(err)
+      // })
     })
   }
 }
@@ -73,7 +113,6 @@ exports.adddevice = {
     db.employees.find({
       where: { email: data.email }
     }).then(employee => {
-      // models.Device.create({
       db.devices.create({
         serial_num: data.serialnum,
         type: data.type,
@@ -109,10 +148,10 @@ exports.adddevice = {
 exports.showDevices = {
 
   handler: (request, reply) => {
-    // models.Device.findAll().then(devices => {
     db.devices.findAll().then(devices => {
       reply.view('allDevices', {
         title: 'All Devices',
+        pageHeader: 'All Devices',
         devices: devices
       })
     })
@@ -156,12 +195,11 @@ exports.assignDevice = {
       },
       callback => {
         db.devices.update({
-          // db.devices.upsert({
-          serial_num: data.serial_num,
-          type: data.type,
-          make: data.make,
-          model: data.model,
-          description: data.description,
+          // serial_num: data.serial_num,
+          // type: data.type,
+          // make: data.make,
+          // model: data.model,
+          // description: data.description,
           EmployeeId: employeeId
         }, {
           where: {
@@ -178,37 +216,5 @@ exports.assignDevice = {
       if (err) return (err)
       reply.redirect('/showAllDevices')
     })
-    /*
-    db.employees.findAll({
-      where: {email: data.email}
-    }).then(employee => {
-      console.log('found_employee: ' + JSON.stringify(employee, null, 2))
-      db.devices.update({
-          EmployeeID: employee[0].id
-        },{
-        where: {
-          serial_num: data.serial_num
-        }
-      })
-    }).then(() => {
-      console.log('success, device ' + data.serial_num + ' associated with employee ' + data.email)
-      reply.redirect('/showAllDevices')
-    }).catch(err => {
-      console.log(err)
-    }) */
-
-    /*
-    models.Device.findById(data.serial_num).then(device => {
-      models.Employee.findAll({
-        where: {email: data.email}
-      })
-    }).then(employee => {
-      models.Device.setEmployee([employee]).then(() => {
-        console.log('success, device ' + data.serial_num + ' associated with employee ' + employee.email)
-        reply.redirect('/showAllDevices')
-      })
-    }).catch(err => {
-      console.log(err)
-    }) */
   }
 }

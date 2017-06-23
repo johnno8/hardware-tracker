@@ -42,4 +42,33 @@
     </div>
   </div>
 
+  <div class="ui grid">
+    <div class="ui four wide column">
+    </div>
+    <div class="ui four wide column">
+    </div>
+    <div class="ui four wide column">
+      <form class="ui blue fluid form segment" action="/device/type" method="POST">
+        <label><strong>Display devices of type</strong></label>
+        <div class="ui fluid selection dropdown type">
+          <input type="hidden" name="type">
+          <i class="dropdown icon"></i>
+          <div class="default text">Type</div>
+          <div class="menu">
+            <div class="item" data-value="laptop">Laptop</div>
+            <div class="item" data-value="monitor">Monitor</div>
+            <div class="item" data-value="keyboard">Keyboard</div>
+            <div class="item" data-value="mouse">Mouse</div>
+            <div class="item" data-value="macmini">Mac Mini</div>
+            <div class="item" data-value="other">Other</div>
+          </div>
+        </div>
+        <br>
+        <button class="ui fluid blue submit button">Submit</button>
+      </form>
+    </div>
+  </div>
+
 </section>
+
+<script>$('.ui.selection.dropdown.type').dropdown()</script>

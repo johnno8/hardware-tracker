@@ -38,10 +38,9 @@ server.register([Vision, Inert], (err) => {
 
   // models.sequelize.sync({ force: true }).then(() => {
   db.sequelize.sync({ force: true }).then(() => {
-
-    //load fixtures
+    // load fixtures
     SequelizeFixtures.loadFile('fixtures/*.json', db).then(function () {
-      console.log("DEV DATA CREATED SUCCESSFULLY")
+      console.log('Fixtures loaded successfully')
       server.start((err) => {
         if (err) {
           throw err

@@ -4,10 +4,10 @@
     "keys": ["id"],
     "data": {
       "id": "rg46F96",
-      "first_name": "Joe",
-      "last_name": "Bloggs",
-      "job_title": "Chief Bottle Washer",
-      "email": "joe.bloggs@mail.com"
+      "first_name": "Mark",
+      "last_name": "Molloy",
+      "job_title": "Intern",
+      "email": "mark.molloy@nearform.com"
     }
   },
   {
@@ -15,10 +15,10 @@
     "keys": ["id"],
     "data": {
       "id": "4u52fhZ",
-      "first_name": "Jane",
-      "last_name": "Doe",
-      "job_title": "Wine Taster",
-      "email": "jane.doe@mail.com"
+      "first_name": "John",
+      "last_name": "O'Keeffe",
+      "job_title": "Intern",
+      "email": "john.okeeffe@nearform.com"
     }
   },
   {
@@ -26,15 +26,14 @@
     "keys": ["id"],
     "data": {
       "id": "n754Qel",
-      "first_name": "Jim",
-      "last_name": "Figgerty",
-      "job_title": "Cider Taster",
-      "email": "jim.figgerty@mail.com"
+      "first_name": "Roisin",
+      "last_name": "Kavanagh",
+      "job_title": "HR Administrator",
+      "email": "roisin.kavanagh@nearform.com"
     }
   },
   {
     "model": "devices",
-    "keys": ["serial_num"],
     "data": {
       "serial_num": "abc123",
       "type": "laptop",
@@ -46,7 +45,6 @@
   },
   {
     "model": "devices",
-    "keys": ["serial_num"],
     "data": {
       "serial_num": "sdf675",
       "type": "laptop",
@@ -58,7 +56,6 @@
   },
   {
     "model": "devices",
-    "keys": ["serial_num"],
     "data": {
       "serial_num": "fth374",
       "type": "monitor",
@@ -70,26 +67,24 @@
   },
   {
     "model": "devices",
-    "keys": ["serial_num"],
     "data": {
-      "serial_num": "sdf675",
+      "serial_num": "kn23g6",
       "type": "mouse",
-      "make": "Apple",
-      "model": "Magic mouse",
-      "description": "Wireless Bluetooth mouse",
-      "EmployeeId": "4u52fhZ"
+      "make": "apple",
+      "model": "magic mouse",
+      "description": "a magic mouse",
+      "EmployeeId": "n754Qel"
     }
   },
   {
     "model": "devices",
-    "keys": ["serial_num"],
     "data": {
-      "serial_num": "sdf675",
-      "type": "keyboard",
-      "make": "Apple",
-      "model": "Magic keyboard",
-      "description": "Wireless Bluetooth keyboard",
-      "EmployeeId": ""
+      "serial_num": "th139k",
+      "type": "mouse",
+      "make": "apple",
+      "model": "magic mouse",
+      "description": "a magic mouse",
+      "EmployeeId": "4u52fhZ"
     }
   }
 ]

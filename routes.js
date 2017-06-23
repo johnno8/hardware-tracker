@@ -9,6 +9,7 @@ const Assets = require('./app/controllers/assets')
 module.exports = [
   { method: 'GET', path: '/', config: Administrators.home },
   { method: 'GET', path: '/employee', config: Administrators.main },
+  { method: 'GET', path: '/employee/{id}', config: Administrators.displayEmployee },
   { method: 'POST', path: '/addemployee', config: Administrators.addEmployee },
   { method: 'GET', path: '/device', config: Administrators.device },
   { method: 'POST', path: '/adddevice', config: Administrators.adddevice },
@@ -16,6 +17,7 @@ module.exports = [
   { method: 'GET', path: '/showAllDevices', config: Administrators.showDevices },
   { method: 'POST', path: '/assignment', config: Administrators.assignment },
   { method: 'POST', path: '/assignDevice', config: Administrators.assignDevice },
+  { method: 'POST', path: '/device/type', config: Administrators.displayType },
 
   {
     method: 'GET',

@@ -1,0 +1,60 @@
+{{> menu }}
+
+<section class="ui raised segment">
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui basic padded segment">
+        <h1 class="ui blue header">Employee Details</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+
+      <form class="ui fluid form segment">
+        <div class="field">
+          <label>Name</label>
+          <input value="{{employee.first_name}} {{employee.last_name}}" type="text" readonly>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input value="{{employee.email}}" type="text" name="email" readonly>
+        </div>
+        <div class="field">
+          <label>Job Title</label>
+          <input value="{{employee.job_title}}" type="text" name="title" readonly>
+        </div>
+      </form>
+
+      <h3 class="ui header">Devices assigned to Employee</h3>
+      <table class="ui celled blue table segment">
+        <thead>
+        <tr>
+          <th> Serial Number</th>
+          <th> Type</th>
+          <th> Make</th>
+          <th> Model</th>
+          <th> Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each employee.Devices }}
+          <tr>
+            <td> {{ serial_num }} </td>
+            <td> {{ type }} </td>
+            <td> {{ make }} </td>
+            <td> {{ model }} </td>
+            <td> {{ description }} </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>

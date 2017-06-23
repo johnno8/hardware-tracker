@@ -16,7 +16,8 @@
     <div class="ui two wide column">
     </div>
     <div class="ui twelve wide column">
-      <table class="ui celled blue table segment">
+      <!--<table class="ui celled blue table segment">-->
+      <table class="ui blue celled table">
         <thead>
         <tr>
           <th> Name</th>
@@ -27,7 +28,7 @@
         <tbody>
         {{#each employees}}
           <tr>
-            <td> {{ first_name }} {{ last_name }} </td>
+            <td><a href="/employee/{{id}}">{{ first_name }} {{ last_name }}</a> </td>
             <td> {{ job_title }} </td>
             <td> {{ email }} </td>
           </tr>
