@@ -24,7 +24,7 @@ server.register([Vision, Inert], (err) => {
     path: './app/views',
     layoutPath: './app/views/layout',
     partialsPath: './app/views/partials',
-    // helpersPath: './app/views/helpers',
+    helpersPath: './app/views/helpers',
     layout: true,
     isCached: false
   })

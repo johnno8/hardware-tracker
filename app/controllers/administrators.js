@@ -218,3 +218,23 @@ exports.assignDevice = {
     })
   }
 }
+
+exports.releaseDevice = {
+
+  handler: (request, reply) => {
+    let data = request.payload
+
+    db.devices.update({
+      EmployeeId: null
+    }, {
+      where: {
+        serial_num: data.serial_num
+      }
+    }).then(() => {
+      console.log('device ' + data.serial_num + ' released')
+      reply.redirect('/showAllDevices')
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}

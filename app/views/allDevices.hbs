@@ -25,7 +25,7 @@
           <th> Make</th>
           <th> Model</th>
           <th> Description</th>
-          <th></th>
+          <th> Action</th>
         </tr>
         </thead>
         <tbody>
@@ -43,15 +43,15 @@
             <td> {{ model }} </td>
             <td> {{ description }} </td>
             <td>
-              <form action="/assignment" method="POST">
-                <!--<a href="#">Assign</a>-->
-                <input name="serial_num" type="hidden" value="{{ serial_num }}">
-                <input name="type" type="hidden" value="{{ type }}">
-                <input name="make" type="hidden" value="{{ make }}">
-                <input name="model" type="hidden" value="{{ model }}">
-                <input name="description" type="hidden" value="{{ description }}">
-                <button class="ui fluid blue submit button">Assign</button>
-              </form>
+              {{{ action this}}}
+              <!--<form action="/assignment" method="POST">-->
+                <!--<input name="serial_num" type="hidden" value="{{ serial_num }}">-->
+                <!--<input name="type" type="hidden" value="{{ type }}">-->
+                <!--<input name="make" type="hidden" value="{{ make }}">-->
+                <!--<input name="model" type="hidden" value="{{ model }}">-->
+                <!--<input name="description" type="hidden" value="{{ description }}">-->
+                <!--<button class="ui fluid blue submit button">Assign</button>-->
+              <!--</form>-->
             </td>
           </tr>
         {{/each}}
