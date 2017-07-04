@@ -148,7 +148,8 @@ exports.adddevice = {
 exports.showDevices = {
 
   handler: (request, reply) => {
-    db.devices.findAll().then(devices => {
+    db.devices.findAll({ include: [db.employees] }).then(devices => {
+      console.log('showDevices JSON: ' + JSON.stringify(devices, null, 2))
       reply.view('allDevices', {
         title: 'All Devices',
         pageHeader: 'All Devices',

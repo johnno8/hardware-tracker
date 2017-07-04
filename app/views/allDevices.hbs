@@ -17,7 +17,6 @@
     </div>
     <div class="ui twelve wide column">
       <table class="ui celled blue table segment">
-      <!--<table class="ui blue selectable celled table">-->
         <thead>
         <tr>
           <th> Serial No.</th>
@@ -25,33 +24,21 @@
           <th> Make</th>
           <th> Model</th>
           <th> Description</th>
+          <th> Assigned to</th>
           <th> Action</th>
         </tr>
         </thead>
         <tbody>
         {{#each devices}}
           <tr>
-            <!--<td class="selectable">-->
-              <!--<form action="/assignment" method="POST">-->
-                <!--&lt;!&ndash;<a href="#">Assign</a>&ndash;&gt;-->
-                <!--<button class="ui fluid blue submit button">Assign</button>-->
-              <!--</form>-->
-            <!--</td>-->
             <td> {{ serial_num }} </td>
             <td> {{ type }} </td>
             <td> {{ make }} </td>
             <td> {{ model }} </td>
             <td> {{ description }} </td>
+            <td> <a href="/employee/{{EmployeeId}}">{{ Employee.first_name }} {{ Employee.last_name}}</a> </td>
             <td>
-              {{{ action this}}}
-              <!--<form action="/assignment" method="POST">-->
-                <!--<input name="serial_num" type="hidden" value="{{ serial_num }}">-->
-                <!--<input name="type" type="hidden" value="{{ type }}">-->
-                <!--<input name="make" type="hidden" value="{{ make }}">-->
-                <!--<input name="model" type="hidden" value="{{ model }}">-->
-                <!--<input name="description" type="hidden" value="{{ description }}">-->
-                <!--<button class="ui fluid blue submit button">Assign</button>-->
-              <!--</form>-->
+              {{{ action this }}}
             </td>
           </tr>
         {{/each}}
@@ -59,14 +46,5 @@
       </table>
     </div>
   </div>
-  <!--<div>-->
-    <!--<div class="ui grid">-->
-      <!--<div class="ui two wide column">-->
-      <!--</div>-->
-      <!--<div class="ui twelve wide column">-->
-        <!--<div id="formDiv"></div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
 
 </section>
