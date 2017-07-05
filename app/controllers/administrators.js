@@ -77,6 +77,56 @@ exports.displayEmployee = {
   }
 }
 
+exports.displayByEmail = {
+
+  handler: (request, reply) => {
+    let data = request.payload
+    console.log('displayByEmail payload: ' + JSON.stringify(data, null, 2))
+    let employeeId
+    let employee
+    async.series([
+      callback => {
+        db.employees.find({
+          where: {
+            email: data.email
+          }
+        }).then(returnedEmployee => {
+          console.log('first returnedEmployee: ' + JSON.stringify(returnedEmployee, null, 2))
+          employeeId = returnedEmployee.id
+          callback()
+        }).catch(err => {
+          callback(err)
+        })
+      },
+      callback => {
+        db.employees.find({
+          where: {
+            id: employeeId
+          },
+          include: [{
+            model: db.devices,
+            where: { EmployeeId: employeeId }
+          }]
+        }).then(returnedEmployee => {
+          console.log('second returnedEmployee: ' + JSON.stringify(returnedEmployee, null, 2))
+          employee = returnedEmployee
+          callback()
+        }).catch(err => {
+          callback(err)
+        })
+      }
+    ], err => {
+      if (err) return (err)
+      // this isn't going to work with existing employeeDetails view, cos of eagerloading in the other display handler
+      console.log('employee: ' + JSON.stringify(employee, null, 2))
+      reply.view('employeeDetails', {
+        title: 'Employee Details',
+        employee: employee
+      })
+    })
+  }
+}
+
 exports.displayType = {
 
   handler: (request, reply) => {
