@@ -82,47 +82,38 @@ exports.displayByEmail = {
   handler: (request, reply) => {
     let data = request.payload
     console.log('displayByEmail payload: ' + JSON.stringify(data, null, 2))
-    let employeeId
-    let employee
-    async.series([
-      callback => {
+    let errors = []
+
+    db.employees.find({
+      where: {
+        email: data.email
+      }
+    }).then(returnedEmployee => {
+      if (returnedEmployee) {
+        console.log('first returnedEmployee: ' + JSON.stringify(returnedEmployee, null, 2))
         db.employees.find({
           where: {
-            email: data.email
-          }
-        }).then(returnedEmployee => {
-          console.log('first returnedEmployee: ' + JSON.stringify(returnedEmployee, null, 2))
-          employeeId = returnedEmployee.id
-          callback()
-        }).catch(err => {
-          callback(err)
-        })
-      },
-      callback => {
-        db.employees.find({
-          where: {
-            id: employeeId
+            id: returnedEmployee.id
           },
           include: [{
             model: db.devices,
-            where: { EmployeeId: employeeId }
+            where: { EmployeeId: returnedEmployee.id }
           }]
-        }).then(returnedEmployee => {
-          console.log('second returnedEmployee: ' + JSON.stringify(returnedEmployee, null, 2))
-          employee = returnedEmployee
-          callback()
-        }).catch(err => {
-          callback(err)
+        }).then(returnedEmployee2 => {
+          reply.view('employeeDetails', {
+            title: 'Employee Details',
+            employee: returnedEmployee2
+          })
+        })
+      } else {
+        errors.push({ message: data.email + ' not found. Please enter valid email' })
+        reply.view('home', {
+          title: 'Home',
+          errors: errors
         })
       }
-    ], err => {
-      if (err) return (err)
-      // this isn't going to work with existing employeeDetails view, cos of eagerloading in the other display handler
-      console.log('employee: ' + JSON.stringify(employee, null, 2))
-      reply.view('employeeDetails', {
-        title: 'Employee Details',
-        employee: employee
-      })
+    }).catch(err => {
+      console.log(err)
     })
   }
 }

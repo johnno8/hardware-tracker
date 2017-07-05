@@ -10,7 +10,7 @@ module.exports = [
   { method: 'GET', path: '/', config: Administrators.home },
   { method: 'GET', path: '/employee', config: Administrators.main },
   { method: 'GET', path: '/employee/{id}', config: Administrators.displayEmployee },
-  { method: 'POST', path: '/employee/search', config: Administrators.displayByEmail },
+  { method: 'POST', path: '/employeesearch', config: Administrators.displayByEmail },
   { method: 'POST', path: '/addemployee', config: Administrators.addEmployee },
   { method: 'GET', path: '/device', config: Administrators.device },
   { method: 'POST', path: '/adddevice', config: Administrators.adddevice },
