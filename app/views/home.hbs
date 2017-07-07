@@ -13,14 +13,14 @@
   </div>
 
   <div class="ui grid">
-    <div class="ui four wide column">
+    <div class="ui two wide column">
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui fluid form" action="/employee" method="GET">
         <button class="ui fluid blue basic submit button">Add an Employee</button>
       </form>
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui fluid form" action="/device" method="GET">
         <button class="ui fluid blue basic submit button">Add a Device</button>
       </form>
@@ -28,14 +28,14 @@
   </div>
 
   <div class="ui grid">
-    <div class="ui four wide column">
+    <div class="ui two wide column">
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui fluid form" action="/showAllEmployees" method="GET">
         <button class="ui fluid blue basic submit button">Display all Employees</button>
       </form>
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui fluid form" action="/showAllDevices" method="GET">
         <button class="ui fluid blue basic submit button">Display all Devices</button>
       </form>
@@ -43,9 +43,9 @@
   </div>
 
   <div class="ui grid">
-    <div class="ui four wide column">
+    <div class="ui two wide column">
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui blue fluid form segment" action="/employeesearch" method="POST">
         <div class="field">
           <label>Find Employee by email</label>
@@ -54,9 +54,9 @@
         <button class="ui fluid blue submit button">Find employee</button>
       </form>
     </div>
-    <div class="ui four wide column">
+    <div class="ui six wide column">
       <form class="ui blue fluid form segment" action="/device/type" method="POST">
-        <label><strong>Display devices of type</strong></label>
+        <label><strong>Display devices by type</strong></label>
         <div class="ui fluid selection dropdown type">
           <input type="hidden" name="type">
           <i class="dropdown icon"></i>
@@ -77,9 +77,9 @@
   </div>
 
   <div class="ui grid">
-    <div class="ui four wide column">
+    <div class="ui two wide column">
     </div>
-    <div class="ui eight wide column">
+    <div class="ui twelve wide column">
       {{> formerror }}
     </div>
   </div>
