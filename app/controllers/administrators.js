@@ -77,6 +77,111 @@ exports.displayEmployee = {
   }
 }
 
+exports.displayDelete = {
+
+  handler: (request, reply) => {
+    let data = request.payload
+
+    db.employees.find({
+      where: { id: data.employeeId },
+      include: [{
+        model: db.devices,
+        where: { EmployeeId: data.employeeId }
+      }]
+    }).then(employee => {
+      console.log('delete view employee: ' + JSON.stringify(employee, null, 2))
+      reply.view('employeeDetails', {
+        title: 'Employee Details',
+        employee: employee,
+        deleteOption: true
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+exports.deleteEmployee = {
+
+  handler: (request, reply) => {
+    let data = request.payload.employeeId
+
+    console.log('deleteEmployee payload data: ' + JSON.stringify(data, null, 2))
+
+    // db.devices.findAll({
+    //   where: { EmployeeId: data }
+    // }).then(devices => {
+    //   if(devices) {
+    //     async.forEach(devices, (device, callback) => {
+    //       db.devices.update({
+    //         EmployeeId: null
+    //       }, {
+    //         where: {
+    //           serial_num: device.serial_num
+    //         }
+    //       }).then(() => {
+    //         callback()
+    //       }).catch(err => {
+    //         callback(err)
+    //       })
+    //     }, err => {
+    //       if(err) return(err)
+    //
+    //     })
+    //   }
+    // })
+
+
+
+    //use async
+    //findAll devices where employeeId === data
+    //then loop through returned devices and de-assign them
+    //then delete the employee
+
+    async.series([
+      callback => {
+        db.devices.findAll({
+          where: { EmployeeId: data }
+        }).then(devices => {
+          if(devices) {
+            async.forEach(devices, (device, callback) => {
+              db.devices.update({
+                EmployeeId: null
+              }, {
+                where: {
+                  serial_num: device.serial_num
+                }
+              }).then(() => {
+                callback()
+              }).catch(err => {
+                callback(err)
+              })
+            }, err => {
+              if(err) callback(err)
+              callback()
+            }) // close forEach
+          } else {
+            callback()
+          }
+        }) // close then
+      }, // close 1st func
+        callback => {
+          db.employees.destroy({
+            where: { id: data }
+          }).then(() => {
+            callback()
+          }).catch(err => {
+            callback(err)
+          })
+        }
+    ], err => {
+      if(err) return (err)
+      reply.redirect('/showAllEmployees')
+    })
+
+  }
+}
+
 exports.displayByEmail = {
 
   handler: (request, reply) => {

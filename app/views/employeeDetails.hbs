@@ -58,4 +58,29 @@
     </div>
   </div>
 
+  {{#if deleteOption}}
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+      <form class="ui red fluid form segment" action="/employee/delete" method="POST">
+        <h3 class="ui red header">Warning - Irreversible Action</h3>
+        <div class="ui grid">
+          <div class="ui six wide column">
+            <div class="ui basic padded segment">
+            <h4>Remove employee from the Database </h4>
+            </div>
+          </div>
+          <div class="ui ten wide column">
+            <div class="ui basic padded segment">
+              <input type="hidden" name="employeeId" value="{{employee.id}}">
+              <button class="ui fluid red submit button">Delete this employee</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{/if}}
+
 </section>

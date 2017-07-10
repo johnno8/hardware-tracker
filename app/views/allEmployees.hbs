@@ -17,12 +17,29 @@
     </div>
     <div class="ui six wide column">
       <form class="ui fluid form" action="/employee" method="GET">
-        <button class="ui fluid blue basic submit button">Add an Employee</button>
+        <button class="ui fluid blue basic submit button"><strong>Add an Employee</strong></button>
       </form>
     </div>
     <div class="ui six wide column">
-      <form class="ui fluid form" action="" method="GET">
-        <button class="ui fluid red basic submit button">Delete an employee</button>
+      <!--<form class="ui fluid form" action="" method="GET">-->
+        <!--<button class="ui fluid red basic submit button">Delete an employee</button>-->
+      <!--</form>-->
+      <form class="ui red fluid form segment" action="/displayDelete" method="POST">
+        <!--<label><strong>Delete an employee</strong></label>-->
+        <h4 class="ui red header">Delete an employee</h4>
+        <div class="ui fluid selection dropdown delete">
+          <input type="hidden" name="employeeId">
+          <!--<input type="hidden" name="deleteOption" value="true">-->
+          <i class="dropdown icon"></i>
+          <div class="default text">employee to delete</div>
+          <div class="menu">
+            {{#each employees}}
+              <div class="item" data-value="{{id}}">{{ first_name }} {{ last_name }}</div>
+            {{/each}}
+          </div>
+        </div>
+        <br>
+        <button class="ui fluid red submit button">Submit</button>
       </form>
     </div>
   </div>
@@ -53,3 +70,5 @@
     </div>
   </div>
 </section>
+
+<script>$('.ui.selection.dropdown.delete').dropdown()</script>

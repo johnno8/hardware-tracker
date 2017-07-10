@@ -12,6 +12,8 @@ module.exports = [
   { method: 'GET', path: '/employee/{id}', config: Administrators.displayEmployee },
   { method: 'POST', path: '/employeesearch', config: Administrators.displayByEmail },
   { method: 'POST', path: '/addemployee', config: Administrators.addEmployee },
+  { method: 'POST', path: '/displayDelete', config: Administrators.displayDelete },
+  { method: 'POST', path: '/employee/delete', config: Administrators.deleteEmployee },
   { method: 'GET', path: '/device', config: Administrators.device },
   { method: 'POST', path: '/adddevice', config: Administrators.adddevice },
   { method: 'GET', path: '/showAllEmployees', config: Administrators.showEmployees },
