@@ -251,7 +251,23 @@ exports.showDevices = {
       reply.view('allDevices', {
         title: 'All Devices',
         pageHeader: 'All Devices',
-        devices: devices
+        devices: devices,
+        showDelete: false
+      })
+    })
+  }
+}
+
+exports.showDevicesDelete = {
+
+  handler: (request, reply) => {
+    db.devices.findAll({ include: [db.employees] }).then(devices => {
+      console.log('showDeleteDevices JSON: ' + JSON.stringify(devices, null, 2))
+      reply.view('allDevices', {
+        title: 'All Devices',
+        pageHeader: 'All Devices',
+        devices: devices,
+        showDelete: true
       })
     })
   }

@@ -21,8 +21,23 @@
       </form>
     </div>
     <div class="ui six wide column">
+      <form class="ui fluid form" action="/showDevicesDelete" method="GET">
+        <button class="ui fluid red basic submit button"><strong>Delete a Device</strong></button>
+      </form>
     </div>
   </div>
+
+  {{#if showDelete}}
+  <div class="ui grid">
+    <div class="ui two wide column">
+    </div>
+    <div class="ui twelve wide column">
+      <div class="ui red fluid form segment">
+        <h3 class="ui red header">Warning - deleting a device is irreversible</h3>
+      </div>
+    </div>
+  </div>
+  {{/if}}
 
   <div class="ui grid">
     <div class="ui two wide column">
@@ -50,7 +65,7 @@
             <td> {{ description }} </td>
             <td> <a href="/employee/{{EmployeeId}}">{{ Employee.first_name }} {{ Employee.last_name}}</a> </td>
             <td>
-              {{{ action this }}}
+              {{{ action this ../showDelete }}}
             </td>
           </tr>
         {{/each}}
