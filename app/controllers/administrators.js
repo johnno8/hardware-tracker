@@ -108,36 +108,6 @@ exports.deleteEmployee = {
 
     console.log('deleteEmployee payload data: ' + JSON.stringify(data, null, 2))
 
-    // db.devices.findAll({
-    //   where: { EmployeeId: data }
-    // }).then(devices => {
-    //   if(devices) {
-    //     async.forEach(devices, (device, callback) => {
-    //       db.devices.update({
-    //         EmployeeId: null
-    //       }, {
-    //         where: {
-    //           serial_num: device.serial_num
-    //         }
-    //       }).then(() => {
-    //         callback()
-    //       }).catch(err => {
-    //         callback(err)
-    //       })
-    //     }, err => {
-    //       if(err) return(err)
-    //
-    //     })
-    //   }
-    // })
-
-
-
-    //use async
-    //findAll devices where employeeId === data
-    //then loop through returned devices and de-assign them
-    //then delete the employee
-
     async.series([
       callback => {
         db.devices.findAll({
@@ -235,9 +205,6 @@ exports.displayType = {
         pageHeader: 'All ' + data.type + 's',
         devices: devices
       })
-      //     .catch(err => {
-      //   console.log(err)
-      // })
     })
   }
 }
@@ -273,21 +240,6 @@ exports.adddevice = {
         console.log(err)
       })
     })
-
-    /*
-    models.Device.create({
-      serial_num: data.serialnum,
-      type: data.type,
-      make: data.make,
-      model: data.model,
-      description: data.description,
-      EmployeeId: null
-    }).then(createdDevice => {
-      console.log('device saved to db: ' + JSON.stringify(createdDevice, null, 2))
-      reply.redirect('/device')
-    }).catch(err => {
-      console.log(err)
-    }) */
   }
 }
 
@@ -342,11 +294,6 @@ exports.assignDevice = {
       },
       callback => {
         db.devices.update({
-          // serial_num: data.serial_num,
-          // type: data.type,
-          // make: data.make,
-          // model: data.model,
-          // description: data.description,
           EmployeeId: employeeId
         }, {
           where: {
