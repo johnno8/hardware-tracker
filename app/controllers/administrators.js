@@ -25,6 +25,27 @@ exports.main = {
 
 exports.addEmployee = {
 
+  validate: {
+
+    payload: {
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+      title: Joi.string().required()
+    },
+
+    failAction: function(request, reply, source, error) {
+      reply.view('employee', {
+        title: 'Add employee error',
+        errors: error.data.details
+      })
+    },
+
+    options: {
+      abortEarly: false
+    }
+  },
+
   handler: (request, reply) => {
     let data = request.payload
 
@@ -236,6 +257,29 @@ exports.device = {
 }
 
 exports.adddevice = {
+
+  validate: {
+
+    payload: {
+      serialnum: Joi.string().required(),
+      type: Joi.string().required(),
+      make: Joi.string().required(),
+      model: Joi.string().required(),
+      description: Joi.string().required(),
+      email: Joi.string().email().required(),
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('device', {
+        title: 'Add device error',
+        errors: error.data.details
+      })
+    },
+
+    options: {
+      abortEarly: false
+    }
+  },
 
   handler: (request, reply) => {
     let data = request.payload
