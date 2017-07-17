@@ -101,6 +101,22 @@ exports.displayEmployee = {
 
 exports.displayDelete = {
 
+  validate: {
+    payload: {
+      employeeId: Joi.string().required()
+    },
+
+    failAction: function(request, reply, source, error) {
+      db.employees.findAll().then(employees => {
+        reply.view('allEmployees', {
+          title: 'Delete input error',
+          employees: employees,
+          errors: error.data.details
+        })
+      })
+    }
+  },
+
   handler: (request, reply) => {
     let data = request.payload
 
