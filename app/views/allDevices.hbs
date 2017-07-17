@@ -21,9 +21,13 @@
       </form>
     </div>
     <div class="ui six wide column">
-      <form class="ui fluid form" action="/showDevicesDelete" method="GET">
-        <button class="ui fluid red basic submit button"><strong>Delete a Device</strong></button>
-      </form>
+      {{#if showDelete}}
+        <a href="/showAllDevices"><button class="ui fluid blue basic submit button"><strong>Back to devices</strong></button></a>
+        {{else}}
+        <form class="ui fluid form" action="/showDevicesDelete" method="GET">
+          <button class="ui fluid red basic submit button"><strong>Delete a Device</strong></button>
+        </form>
+      {{/if}}
     </div>
   </div>
 

@@ -273,6 +273,60 @@ exports.showDevicesDelete = {
   }
 }
 
+exports.deleteDevice = {
+
+  handler: (request, reply) => {
+    let data = request.payload.serial_num
+    let devices = []
+
+    async.series([
+      callback => {
+        db.devices.findAll({
+          where: {
+            serial_num: data
+          }
+        }).then(returnedDevices => {
+          devices = returnedDevices
+          callback()
+        }).catch(err => {
+          callback(err)
+        })
+      },
+      callback => {
+        if(devices[0].EmployeeId) {
+          db.devices.update({
+            EmployeeId: null
+          }, {
+            where: {
+              serial_num: data
+            }
+          }).then(updated => {
+            console.log('Device ' + data + ' released: ' + updated)
+            callback()
+          }).catch(err => {
+            callback (err)
+          })
+        }
+      },
+      callback => {
+        db.devices.destroy({
+          where: {
+            serial_num: data
+          }
+        }).then(destroyed => {
+          console.log('Device ' + data + ' deleted: ' + destroyed)
+          callback()
+        }).catch(err => {
+          callback(err)
+        })
+      }
+    ], err => {
+      if(err) return(err)
+      reply.redirect('/showAllDevices')
+    })
+  }
+}
+
 exports.assignment = {
 
   handler: (request, reply) => {

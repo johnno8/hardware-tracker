@@ -20,6 +20,7 @@ module.exports = [
   { method: 'GET', path: '/showAllDevices', config: Administrators.showDevices },
   { method: 'POST', path: '/assignment', config: Administrators.assignment },
   { method: ['GET','POST'], path: '/showDevicesDelete', config: Administrators.showDevicesDelete },
+  { method: 'POST', path: '/device/delete', config: Administrators.deleteDevice },
   { method: 'POST', path: '/assignDevice', config: Administrators.assignDevice },
   { method: 'POST', path: '/release', config: Administrators.releaseDevice },
   { method: 'POST', path: '/device/type', config: Administrators.displayType },
