@@ -7,6 +7,7 @@
 const db = require('../models/index.js')
 const shortId = require('shortid')
 const async = require('async')
+const Joi = require('joi')
 
 exports.home = {
 
@@ -194,6 +195,24 @@ exports.displayByEmail = {
 }
 
 exports.displayType = {
+
+  validate: {
+
+    payload: {
+      type: Joi.string().required()
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('home', {
+        title: 'Type input error',
+        errors: error.data.details
+      }).code(400)
+    },
+
+    options: {
+      abortEarly: false
+    }
+  },
 
   handler: (request, reply) => {
     let data = request.payload

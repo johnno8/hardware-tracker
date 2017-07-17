@@ -23,7 +23,7 @@ module.exports = [
   { method: 'POST', path: '/device/delete', config: Administrators.deleteDevice },
   { method: 'POST', path: '/assignDevice', config: Administrators.assignDevice },
   { method: 'POST', path: '/release', config: Administrators.releaseDevice },
-  { method: 'POST', path: '/device/type', config: Administrators.displayType },
+  { method: 'POST', path: '/deviceType', config: Administrators.displayType },
 
   {
     method: 'GET',
