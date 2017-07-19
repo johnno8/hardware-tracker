@@ -99,23 +99,46 @@ exports.displayEmployee = {
   }
 }
 
-exports.displayDelete = {
+exports.viewEmployee = {
 
-  validate: {
-    payload: {
-      employeeId: Joi.string().required()
-    },
+  handler: (request, reply) => {
+    let data = request.payload.employeeId
 
-    failAction: function(request, reply, source, error) {
-      db.employees.findAll().then(employees => {
-        reply.view('allEmployees', {
-          title: 'Delete input error',
-          employees: employees,
-          errors: error.data.details
-        })
+    db.employees.find({
+      where: { id: data },
+      include: [{
+        model: db.devices,
+        where: { EmployeeId: data }
+      }]
+    }).then(employee => {
+      console.log('employee: ' + JSON.stringify(employee, null, 2))
+      reply.view('employeeDetails', {
+        title: 'Employee Details',
+        employee: employee
       })
-    }
-  },
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+exports.displayEdit = {
+
+  // validate: {
+  //   payload: {
+  //     employeeId: Joi.string().required()
+  //   },
+  //
+  //   failAction: function(request, reply, source, error) {
+  //     db.employees.findAll().then(employees => {
+  //       reply.view('allEmployees', {
+  //         title: 'Delete input error',
+  //         employees: employees,
+  //         errors: error.data.details
+  //       })
+  //     })
+  //   }
+  // },
 
   handler: (request, reply) => {
     let data = request.payload
@@ -131,7 +154,41 @@ exports.displayDelete = {
       reply.view('employeeDetails', {
         title: 'Employee Details',
         employee: employee,
-        deleteOption: true
+        editOption: true
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+exports.editDetails = {
+
+  handler: (request, reply) => {
+    let data = request.payload
+
+    db.employees.update({
+      first_name: data.firstName,
+      last_name: data.lastName,
+      job_title: data.title,
+      email: data.email
+    }, {
+      where: {
+        id: data.id
+      }
+    }).then(editedEmployee => {
+      db.employees.find({
+        where: { id: data.id },
+        include: [{
+          model: db.devices,
+          where: { EmployeeId: data.id }
+        }]
+      }).then(foundEmployee => {
+        console.log('updated employee: ' + JSON.stringify(foundEmployee, null, 2))
+        reply.view('employeeDetails', {
+          title: 'Employee Details',
+          employee: foundEmployee
+        })
       })
     }).catch(err => {
       console.log(err)

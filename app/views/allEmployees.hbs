@@ -22,12 +22,12 @@
       {{> formerror }}
     </div>
     <div class="ui six wide column">
-      <form class="ui red fluid form segment" action="/displayDelete" method="POST">
-        <h4 class="ui red header">Delete an employee</h4>
+      <form class="ui blue fluid form segment" action="/viewEmployee" method="POST">
+        <h4 class="ui blue header">View an employee</h4>
         <div class="ui fluid selection dropdown delete">
           <input type="hidden" name="employeeId">
           <i class="dropdown icon"></i>
-          <div class="default text">employee to delete</div>
+          <div class="default text">employee to view</div>
           <div class="menu">
             {{#each employees}}
               <div class="item" data-value="{{id}}">{{ first_name }} {{ last_name }}</div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <br>
-        <button class="ui fluid red submit button">Submit</button>
+        <button class="ui fluid blue submit button">Submit</button>
       </form>
     </div>
   </div>

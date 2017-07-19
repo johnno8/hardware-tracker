@@ -4,10 +4,21 @@
   <div class="ui grid">
     <div class="ui two wide column">
     </div>
-    <div class="ui twelve wide column">
+    <div class="ui eight wide column">
       <div class="ui basic padded segment">
         <h1 class="ui blue header">{{employee.first_name}} {{employee.last_name}}</h1>
       </div>
+    </div>
+    <div class="ui four wide column">
+      {{#if editOption}}
+      {{else}}
+      <div class="ui basic padded segment">
+        <form class="ui fluid form" action="/displayEdit" method="POST">
+          <input type="hidden" name="employeeId" value={{employee.id}}>
+          <button class="ui fluid blue basic submit button"><strong>Edit this Employee</strong></button>
+        </form>
+      </div>
+      {{/if}}
     </div>
   </div>
 
@@ -15,21 +26,52 @@
     <div class="ui two wide column">
     </div>
     <div class="ui twelve wide column">
+      {{#if editOption}}
+      <form class="ui fluid form segment" action="/editDetails" method="POST">
+        <!--<div class="field">-->
+          <!--<label>Name</label>-->
+          <!--<input value="{{employee.first_name}} {{employee.last_name}}" type="text">-->
+        <!--</div>-->
 
-      <form class="ui fluid form segment">
-        <div class="field">
-          <label>Name</label>
-          <input value="{{employee.first_name}} {{employee.last_name}}" type="text" readonly>
+        <div class="two fields">
+          <div class="field">
+            <label>First Name</label>
+            <input value="{{employee.first_name}}" type="text" name="firstName">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input value="{{employee.last_name}}" type="text" name="lastName">
+          </div>
         </div>
+
         <div class="field">
           <label>Email</label>
-          <input value="{{employee.email}}" type="text" name="email" readonly>
+          <input value="{{employee.email}}" type="text" name="email">
         </div>
         <div class="field">
           <label>Job Title</label>
-          <input value="{{employee.job_title}}" type="text" name="title" readonly>
+          <input value="{{employee.job_title}}" type="text" name="title">
         </div>
+        <input type="hidden" value="{{employee.id}}" name="id">
+        <button class="ui fluid blue submit button"><strong>Submit new Details</strong></button>
       </form>
+      {{else}}
+        <form class="ui fluid form segment">
+          <div class="field">
+            <label>Name</label>
+            <input value="{{employee.first_name}} {{employee.last_name}}" type="text" readonly>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input value="{{employee.email}}" type="text" name="email" readonly>
+          </div>
+          <div class="field">
+            <label>Job Title</label>
+            <input value="{{employee.job_title}}" type="text" name="title" readonly>
+          </div>
+        </form>
+      {{/if}}
+
 
       <h3 class="ui header">Devices assigned to Employee</h3>
       <table class="ui celled blue table segment">
@@ -57,7 +99,7 @@
     </div>
   </div>
 
-  {{#if deleteOption}}
+  {{#if editOption}}
   <div class="ui grid">
     <div class="ui two wide column">
     </div>
